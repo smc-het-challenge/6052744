@@ -1,0 +1,180 @@
+{
+    "a_galaxy_workflow": "true", 
+    "format-version": "0.1", 
+    "name": "mix_gaussian", 
+    "steps": {
+        "1": {
+            "tool_id": "ht_testing", 
+            "uuid": "04d427e3-3597-497c-9b5d-884194b31279", 
+            "user_outputs": [], 
+            "tool_version": "1.0.0", 
+            "outputs": [
+                {
+                    "type": "txt", 
+                    "name": "cellularity"
+                }, 
+                {
+                    "type": "txt", 
+                    "name": "no_clusters"
+                }, 
+                {
+                    "type": "txt", 
+                    "name": "proportions"
+                }, 
+                {
+                    "type": "txt", 
+                    "name": "assignments"
+                }, 
+                {
+                    "type": "txt", 
+                    "name": "co_clustering"
+                }, 
+                {
+                    "type": "txt", 
+                    "name": "tree"
+                }, 
+                {
+                    "type": "txt", 
+                    "name": "adm"
+                }
+            ], 
+            "post_job_actions": {
+                "HideDatasetActionproportions": {
+                    "output_name": "proportions", 
+                    "action_type": "HideDatasetAction", 
+                    "action_arguments": {}
+                }, 
+                "HideDatasetActioncellularity": {
+                    "output_name": "cellularity", 
+                    "action_type": "HideDatasetAction", 
+                    "action_arguments": {}
+                }, 
+                "HideDatasetActiontree": {
+                    "output_name": "tree", 
+                    "action_type": "HideDatasetAction", 
+                    "action_arguments": {}
+                }, 
+                "HideDatasetActionassignments": {
+                    "output_name": "assignments", 
+                    "action_type": "HideDatasetAction", 
+                    "action_arguments": {}
+                }, 
+                "HideDatasetActionno_clusters": {
+                    "output_name": "no_clusters", 
+                    "action_type": "HideDatasetAction", 
+                    "action_arguments": {}
+                }, 
+                "HideDatasetActionco_clustering": {
+                    "output_name": "co_clustering", 
+                    "action_type": "HideDatasetAction", 
+                    "action_arguments": {}
+                }, 
+                "HideDatasetActionadm": {
+                    "output_name": "adm", 
+                    "action_type": "HideDatasetAction", 
+                    "action_arguments": {}
+                }
+            }, 
+            "annotation": "", 
+            "input_connections": {
+                "input_vcf": {
+                    "output_name": "output", 
+                    "id": 0
+                }
+            }, 
+            "inputs": [], 
+            "tool_errors": null, 
+            "position": {
+                "top": 202.5, 
+                "left": 501
+            }, 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"input_vcf\": \"null\"}", 
+            "label": null, 
+            "type": "tool", 
+            "id": 1, 
+            "name": "mix_gaussian"
+        }, 
+        "0": {
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "VCF_INPUT"
+                }
+            ], 
+            "uuid": "72b1c8e8-e082-4025-80f1-54b46c2ea17a", 
+            "user_outputs": [], 
+            "tool_id": null, 
+            "outputs": [], 
+            "tool_version": null, 
+            "annotation": "", 
+            "input_connections": {}, 
+            "tool_errors": null, 
+            "position": {
+                "top": 244.5, 
+                "left": 210
+            }, 
+            "tool_state": "{\"name\": \"VCF_INPUT\"}", 
+            "label": null, 
+            "type": "data_input", 
+            "id": 0, 
+            "name": "Input dataset"
+        }, 
+        "2": {
+            "tool_id": "smc_het_eval", 
+            "uuid": "0c466a47-7ccc-4ff7-b3ec-f729f7c5d38d", 
+            "user_outputs": [], 
+            "tool_version": "0.1.0", 
+            "outputs": [
+                {
+                    "type": "txt", 
+                    "name": "outfile"
+                }
+            ], 
+            "post_job_actions": {}, 
+            "annotation": "", 
+            "input_connections": {
+                "cluster_assignment|predfile": {
+                    "output_name": "assignments", 
+                    "id": 1
+                }, 
+                "cellularity|predfile": {
+                    "output_name": "cellularity", 
+                    "id": 1
+                }, 
+                "cocluster_assignment|predfile": {
+                    "output_name": "co_clustering", 
+                    "id": 1
+                }, 
+                "cocluster_assignment|ancestor|predfile": {
+                    "output_name": "adm", 
+                    "id": 1
+                }, 
+                "proportion|predfile": {
+                    "output_name": "proportions", 
+                    "id": 1
+                }, 
+                "population|predfile": {
+                    "output_name": "no_clusters", 
+                    "id": 1
+                }, 
+                "cluster_assignment|phylogeny|predfile": {
+                    "output_name": "tree", 
+                    "id": 1
+                }
+            }, 
+            "inputs": [], 
+            "tool_errors": null, 
+            "position": {
+                "top": 181.5, 
+                "left": 783
+            }, 
+            "tool_state": "{\"cocluster_assignment\": \"{\\\"ancestor\\\": {\\\"predfile\\\": null, \\\"submit\\\": \\\"yes\\\", \\\"__current_case__\\\": 0}, \\\"predfile\\\": null, \\\"submit\\\": \\\"yes\\\", \\\"__current_case__\\\": 0}\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"proportion\": \"{\\\"predfile\\\": null, \\\"submit\\\": \\\"yes\\\", \\\"__current_case__\\\": 0}\", \"sample\": \"\\\"/opt/galaxy/data/Tumour1/Tumour1\\\"\", \"cellularity\": \"{\\\"predfile\\\": null, \\\"submit\\\": \\\"yes\\\", \\\"__current_case__\\\": 0}\", \"cluster_assignment\": \"{\\\"predfile\\\": null, \\\"phylogeny\\\": {\\\"predfile\\\": null, \\\"submit\\\": \\\"yes\\\", \\\"__current_case__\\\": 0}, \\\"submit\\\": \\\"yes\\\", \\\"__current_case__\\\": 0}\", \"population\": \"{\\\"predfile\\\": null, \\\"submit\\\": \\\"yes\\\", \\\"__current_case__\\\": 0}\"}", 
+            "label": null, 
+            "type": "tool", 
+            "id": 2, 
+            "name": "SMC-Het Evaluator"
+        }
+    }, 
+    "annotation": "", 
+    "uuid": "2cab6fb1-c91e-4595-a7c1-d0bd530e16f9"
+}
